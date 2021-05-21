@@ -5,14 +5,21 @@ class Stage {
     }
 
     render() {
-        
+        let stage = document.createElement('div')
+        stage.classList.add('stage');
+        stage.style.width = this.width;
+        stage.style.height = this.height;
+
+        return stage
     }
     
-    mount() {
-
+    mount(parent) {
+        this.stage = this.render();
+        parent.appendChild(this.stage)
+        this.update()
     }
 
     update() {
-
+        console.log('yo')
     }
 }
