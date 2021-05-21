@@ -9,6 +9,11 @@ html {
 
 body {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
 }
 
 .container {
@@ -85,9 +90,6 @@ body {
 }
 
 .score {
-  position: fixed;
-  left: 0px;
-  top: 0px;
   font-size: 4rem;
   font-weight: bold;
 }

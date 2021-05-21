@@ -55,8 +55,13 @@ class Pacman {
     }
     if (type == "apple") {
       this.parent.points += 1;
-      document.querySelector(".score").innerHTML = this.parent.points;
+      console.log(this.parent.points);
+      console.log(this.parent.appleCounter)
+      document.querySelector(".score").innerHTML = this.parent.points + ' / ' + this.parent.appleCounter;
       this.parent.removeEntity(this.xpos, this.ypos);
+      if (this.parent.points === this.parent.appleCounter) {
+        document.querySelector(".score").innerHTML = "You ate everything!"
+      }
     }
     if (type == "bomb") {
       if (Math.random() > 0.5) {
@@ -64,6 +69,7 @@ class Pacman {
         this.element.firstChild.classList.remove("entity--pac");
         this.element.firstChild.classList.remove("pacboy-active-light");
         this.alive = false;
+        document.querySelector(".score").innerHTML = "You are dead!"
       }
       this.parent.removeEntity(this.xpos, this.ypos);
     }

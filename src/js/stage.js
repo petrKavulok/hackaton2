@@ -7,6 +7,7 @@ class Stage {
     this.height = heightTiles * 85;
     this.entities = [];
     this.points = 0;
+    this.appleCounter = 0;
   }
 
   render() {
@@ -19,12 +20,13 @@ class Stage {
     this.element = this.render();
     parent.appendChild(this.element);
     this.createEntities();
+
     this.update();
   }
   update() {
     this.element.style.width = this.width + "px";
     this.element.style.height = this.height + "px";
-    document.querySelector(".score").innerHTML = this.points;
+
   }
 
   createEntities() {
@@ -34,6 +36,7 @@ class Stage {
       .then((resp) => resp.json())
 
       .then((pieces) => {
+        
         pieces.walls.forEach((wall) => {
           let item = new Entity(wall.x, wall.y, "wall");
           item.mount(document.querySelector(".stage"));
@@ -44,13 +47,16 @@ class Stage {
           let item = new Entity(wall.x, wall.y, "apple");
           item.mount(document.querySelector(".stage"));
           this.entities.push(item);
+          this.appleCounter += 1;          
         });
 
         pieces.bombs.forEach((wall) => {
           let item = new Entity(wall.x, wall.y, "bomb");
           item.mount(document.querySelector(".stage"));
           this.entities.push(item);
+          
         });
+        document.querySelector(".score").innerHTML = this.points + '/' + this.appleCounter;
       });
   }
 
