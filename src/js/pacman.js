@@ -1,11 +1,12 @@
 "use strict";
+// import Stage from './stage.js';
 
 class Pacman {
   constructor(xpos, ypos, mouth, direction) {
-    this.TILE_SIZE = 85;
+    this.tileSize = 85;
     
-    this.xpos = xpos * this.TILE_SIZE;
-    this.ypos = ypos * this.TILE_SIZE;
+    this.xpos = xpos * this.tileSize;
+    this.ypos = ypos * this.tileSize;
     this.mouth = mouth;
     this.direction = direction;
 
@@ -32,16 +33,17 @@ class Pacman {
   move(direction) {
     this.direction = direction
     if (direction === 'right') {
-      this.xpos += this.TILE_SIZE;
+      this.xpos += this.tileSize;
+
     }
     if (direction === 'left') {
-      this.xpos -= this.TILE_SIZE;
+      this.xpos -= this.tileSize;
     }
     if (direction === 'up') {
-      this.ypos -= this.TILE_SIZE;
+      this.ypos -= this.tileSize;
     }
     if (direction === 'down') {
-      this.ypos += this.TILE_SIZE;
+      this.ypos += this.tileSize;
     }
       this.changeMouth();
       this.update();

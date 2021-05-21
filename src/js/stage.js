@@ -1,7 +1,8 @@
+// export default 
 class Stage {
     constructor (widthTiles, heightTiles) {
-        this.width = widthTiles * 85 + 'px';
-        this.height = heightTiles * 85 + 'px';
+        this.width = widthTiles * 85;
+        this.height = heightTiles * 85;
     }
 
     render() {
@@ -18,7 +19,7 @@ class Stage {
   }
     update() {
         const stage = this.element.querySelector(".stage");
-        stage.style.width = this.width;
-        stage.style.height = this.height;
+        stage.style.width = this.width + 'px';
+        stage.style.height = this.height + 'px';
     }
 }
