@@ -14,7 +14,6 @@ document.addEventListener("keydown", (event) => {
     }
   }
   if (event.code === "ArrowLeft") {
-    console.log();
     if (pacman.xpos > 0) {
       pacman.move("left");
     }

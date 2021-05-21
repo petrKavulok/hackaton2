@@ -48,9 +48,7 @@ class Pacman {
     }
     this.changeMouth();
     let type = this.parent.collisionDetection(this.xpos, this.ypos);
-    console.log(type);
-    console.log(this.parent.entities);
-
+    
     if (type == "wall") {
       this.xpos = xInitial;
       this.ypos = yInitial;

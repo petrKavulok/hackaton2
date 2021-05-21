@@ -57,7 +57,6 @@ class Stage {
   removeEntity(x, y) {
     this.entities.forEach((entity, index) => {
       if (entity.xpos == x && entity.ypos == y) {
-        console.log(this.entities[index]);
         this.entities[index].element.style.display = "none";
         this.entities.splice(index, 1);
       }
