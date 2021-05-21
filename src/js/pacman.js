@@ -13,8 +13,7 @@ class Pacman {
   render () {
     let element = document.createElement('div');
         element.innerHTML = `<div class="entity entity--pac pacboy-active-light"></div>`;
-    console.log(element)
-    this.update()
+
     return element
   }
 
@@ -47,8 +46,7 @@ class Pacman {
   }
 
   update() {
-    console.log(element)
-    const entity = document.querySelector(".entity");
+    const entity = this.element.querySelector(".entity");
     entity.style.left = this.xpos + "px";
     entity.style.top = this.ypos + "px";
     if (this.mouth) {
