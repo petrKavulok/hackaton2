@@ -2,12 +2,14 @@
 
 class Pacman {
   constructor(xpos, ypos, mouth, direction) {
-    this.xpos = xpos;
-    this.ypos = ypos;
+    this.TILE_SIZE = 85;
+    
+    this.xpos = xpos * this.TILE_SIZE;
+    this.ypos = ypos * this.TILE_SIZE;
     this.mouth = mouth;
     this.direction = direction;
 
-    this.TILE_SIZE = 85;
+    
   }
 
   render () {
