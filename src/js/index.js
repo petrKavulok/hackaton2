@@ -1,39 +1,20 @@
-"use strict";
+const pacman = new Pacman(0, 85, true, 'right');
+pacman.mount(document.querySelector('.container'))
 
-class Pacman {
-  constructor(xpos, mouth) {
-    this.xpos = xpos;
-    this.mouth = mouth;
 
-    this.TILE_SIZE = 85;
-  }
+    // let entity = element.querySelector('.entity');
 
-  changeMouth() {
-    this.mouth = !this.mouth;
-  }
-  moveRight() {
-    this.xpos += this.TILE_SIZE;
-    this.changeMouth();
-    this.update();
-  }
-
-  update() {
-    const entity = document.querySelector(".entity");
-    
-    entity.style.left = this.xpos + "px";
-
-    if (this.mouth) {
-      entity.style.backgroundPositionX = "85px";
-    } else {
-      entity.style.backgroundPositionX = "0px";
+    document.addEventListener("keydown", (event) => {
+    if (event.code === "ArrowRight") {
+        console.log('ahoj marku')
+        pacman.move('right');
     }
-  }
-}
-
-const pacman = new Pacman(0, true);
-
-document.addEventListener("keydown", (event) => {
-  if (event.code === "ArrowRight") {
-    pacman.moveRight();
-  }
-});
+    if (event.code === "ArrowLeft") {
+      pacman.move('left');
+    }
+    if (event.code === "ArrowDown") {
+      pacman.move('down');
+    }
+    if (event.code === "ArrowUp") {
+      pacman.move('up');
+    }})
