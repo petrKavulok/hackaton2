@@ -1,4 +1,4 @@
-const stage = new Stage(12, 5);
+const stage = new Stage(11, 7);
 stage.mount(document.querySelector(".container"));
 
 const pacman = new Pacman(0, 0, true, "right");
@@ -9,7 +9,8 @@ pacman.mount(stage);
 
 document.addEventListener("keydown", (event) => {
   if (event.code === "ArrowRight") {
-    if (stage.width > pacman.xpos + pacman.tileSize) {
+    console.log(stage.height, pacman.ypos, pacman.tileSize)
+    if (stage.width > pacman.xpos * pacman.tileSize +85) {
       pacman.move("right");
     }
   }
@@ -19,7 +20,8 @@ document.addEventListener("keydown", (event) => {
     }
   }
   if (event.code === "ArrowDown") {
-    if (stage.height > pacman.ypos + pacman.tileSize) {
+    if (stage.height > (pacman.ypos * pacman.tileSize) + 85) {
+        
       pacman.move("down");
     }
   }
