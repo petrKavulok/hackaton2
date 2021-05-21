@@ -1,6 +1,8 @@
 // export default
 class Stage {
   constructor(widthTiles, heightTiles) {
+    this.widthTiles = widthTiles;
+    this.heightTiles = heightTiles;
     this.width = widthTiles * 85;
     this.height = heightTiles * 85;
     this.entities = [];
@@ -26,17 +28,30 @@ class Stage {
   }
 
   createEntities() {
-    const wall1 = new Entity(4, 2, "wall");
-    wall1.mount(document.querySelector(".stage"));
-    this.entities.push(wall1);
+    fetch(
+      `http://bootcamp.podlomar.org/api/pacman?width=${this.widthTiles}&height=${this.heightTiles}`
+    )
+      .then((resp) => resp.json())
 
-    const apple1 = new Entity(4, 3, "apple");
-    apple1.mount(document.querySelector(".stage"));
-    this.entities.push(apple1);
+      .then((pieces) => {
+        pieces.walls.forEach((wall) => {
+          let item = new Entity(wall.x, wall.y, "wall");
+          item.mount(document.querySelector(".stage"));
+          this.entities.push(item);
+        });
 
-    const bomb1 = new Entity(4, 4, "bomb");
-    bomb1.mount(document.querySelector(".stage"));
-    this.entities.push(bomb1);
+        pieces.apples.forEach((wall) => {
+          let item = new Entity(wall.x, wall.y, "apple");
+          item.mount(document.querySelector(".stage"));
+          this.entities.push(item);
+        });
+
+        pieces.bombs.forEach((wall) => {
+          let item = new Entity(wall.x, wall.y, "bomb");
+          item.mount(document.querySelector(".stage"));
+          this.entities.push(item);
+        });
+      });
   }
 
   removeEntity(x, y) {

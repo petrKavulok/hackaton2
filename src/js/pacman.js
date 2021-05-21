@@ -65,9 +65,9 @@ class Pacman {
         this.element.firstChild.classList.add("entity--tomb");
         this.element.firstChild.classList.remove("entity--pac");
         this.element.firstChild.classList.remove("pacboy-active-light");
+        this.alive = false;
       }
       this.parent.removeEntity(this.xpos, this.ypos);
-      this.alive = false;
     }
 
     this.update();
